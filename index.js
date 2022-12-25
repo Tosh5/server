@@ -38,5 +38,5 @@ io.on("connection", (socket) =>{
 
 
 server.listen(process.env.PORT || 8000, () =>{
-    console.log('server is running')
+    console.log('server is running dayo')
 })
