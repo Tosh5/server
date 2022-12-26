@@ -40,7 +40,7 @@ io.on("connection", (socket) =>{
         // socket.to(data).emit("received_message", data)
         // socket.broadcast.emit("receive_message", data)
         socket.emit("receive_message", data)
-        socket.emit("receive_message", random)
+        // socket.emit("receive_message", random)
 
     })
 })
