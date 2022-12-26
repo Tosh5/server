@@ -6,16 +6,30 @@ const http = require('http')
 const {Server} = require('socket.io')
 const cors = require('cors')
 
-app.use(cors())
+// app.use(cors())
 
 const server = http.createServer(app)
 
-const io = new Server(server, {
-    cors: {
-        origin: "https://cheer-app2.vercel.app/",
-        methods: ['GET', 'POST']
-    }
-})
+// const io = new Server(server, {
+//     cors: {
+//         origin: "https://cheer-app2.vercel.app/",
+//         methods: ['GET', 'POST']
+//     }
+// })
+// 'http://localhost:3000'||
+
+
+app.use((req, res, next) => {
+    res.setHeader("Access-Control-Allow-Origin", "*")
+    res.setHeader(
+      "Access-Control-Allow-Methods",
+      "GET, POST, PUT, PATCH, DELETE, OPTION"
+    )
+    res.setHeader("Access-Control-Allow-Headers", "Content-Type, Authorization")
+    next()
+  })
+
+
 
 const rand = () =>{
     var random = Math.random();
