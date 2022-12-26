@@ -12,7 +12,7 @@ const server = http.createServer(app)
 
 const io = new Server(server, {
     cors: {
-        origin: "https://cheer-app2.vercel.app",
+        origin: "https://cheer-app1.vercel.app",
         methods: ['GET', 'POST']
     }
 })
