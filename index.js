@@ -17,6 +17,12 @@ const io = new Server(server, {
     }
 })
 
+const rand = () =>{
+    var random = Math.random();
+    // console.log(`random is ${random}`)
+    io.emit("rand", (random))
+}
+
 io.on("connection", (socket) =>{
     console.log(`User Connected: ${socket.id}`)
 
@@ -26,11 +32,26 @@ io.on("connection", (socket) =>{
 
     socket.on("send_message", (data)=>{
         console.log(data)
+        var random = Math.random()
+        console.log(random)
+        // var return_msg = `${random} ${str(data)}`
+        // console.log(return_msg)
+
         // socket.to(data).emit("received_message", data)
-        socket.broadcast.emit("receive_message", data)
+        // socket.broadcast.emit("receive_message", data)
+        socket.emit("receive_message", data)
+        socket.emit("receive_message", random)
 
     })
 })
+
+// io.on("send_message", (data)=>{
+//     console.log(data)
+//     // socket.to(data).emit("received_message", data)
+//     // socket.broadcast.emit("receive_message", data)
+//     socket.emit("receive_message", data)
+
+// })
 
 
 
