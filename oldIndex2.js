@@ -1,3 +1,5 @@
+'use strict';
+
 const express = require('express')
 const app = express()
 const http = require('http')
@@ -14,16 +16,18 @@ const io = new Server(server, {
         methods: ['GET', 'POST']
     }
 })
+// 'http://localhost:3000'||
 
-// app.use((req, res, next) => {
-//     res.setHeader("Access-Control-Allow-Origin", "*")
-//     res.setHeader(
-//       "Access-Control-Allow-Methods",
-//       "GET, POST, PUT, PATCH, DELETE, OPTION"
-//     )
-//     res.setHeader("Access-Control-Allow-Headers", "Content-Type, Authorization")
-//     next()
-//   })
+
+app.use((req, res, next) => {
+    res.setHeader("Access-Control-Allow-Origin", "*")
+    res.setHeader(
+      "Access-Control-Allow-Methods",
+      "GET, POST, PUT, PATCH, DELETE, OPTION"
+    )
+    res.setHeader("Access-Control-Allow-Headers", "Content-Type, Authorization")
+    next()
+  })
 
 
 
@@ -42,8 +46,16 @@ io.on("connection", (socket) =>{
 
     socket.on("send_message", (data)=>{
         console.log(data)
+        // var random = Math.random()
+        // console.log(random)
+        // var return_msg = `${random} ${str(data)}`
+        // console.log(return_msg)
 
+        // socket.to(data).emit("received_message", data)
+        // socket.broadcast.emit("receive_message", data)
         socket.emit("receive_message", data)
+        // socket.emit("receive_message", random)
+
     })
 })
 
