@@ -54,6 +54,8 @@ io.on("connection", (socket) =>{
 
         let aveIndex = String(sum / index_bin.length)
 
+        console.log(aveIndex)
+
         await socket.emit("ave_index", aveIndex)
 
         console.log(`ave_index is ${aveIndex}`)
