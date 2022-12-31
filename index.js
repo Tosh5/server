@@ -44,10 +44,12 @@ io.on("connection", (socket) =>{
         }
 
         let aveIndex = sum / index_bin.length
+        
+        socket.emit("aveIndex", aveIndex)
 
         console.log(`aveIndex is ${aveIndex}`)
         
-        socket.emit("aveIndex", aveIndex)
+        
     })
 })
 
