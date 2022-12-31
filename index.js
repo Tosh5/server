@@ -41,7 +41,7 @@ indexIo.on("connection", (socket) =>{
 
         console.log(data)
 
-        socket.emit("receive_message2", data);
+        // socket.emit("receive_message2", data);
 
         index_bin.splice(0,1);
         index_bin.push(data)
