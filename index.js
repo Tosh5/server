@@ -15,6 +15,18 @@ const io = new Server(server, {
     }
 })
 
+// 一旦戻してみる
+app.use((req, res, next) => {
+    res.setHeader("Access-Control-Allow-Origin", "*")
+    res.setHeader(
+      "Access-Control-Allow-Methods",
+      "GET, POST, PUT, PATCH, DELETE, OPTION"
+    )
+    res.setHeader("Access-Control-Allow-Headers", "Content-Type, Authorization")
+    next()
+})
+
+
 const index_bin_size = 20
 
 const index_bin = [...Array(index_bin_size)].map((_, i) => i);
