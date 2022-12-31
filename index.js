@@ -44,7 +44,7 @@ io.on("connection", (socket) =>{
         }
 
         let aveIndex = sum / index_bin.length
-        
+
         socket.emit("aveIndex", aveIndex)
 
         console.log(`aveIndex is ${aveIndex}`)
@@ -53,13 +53,13 @@ io.on("connection", (socket) =>{
     })
 })
 
-// io.on("send_message", (data)=>{
-//     console.log(data)
-//     // socket.to(data).emit("received_message", data)
-//     // socket.broadcast.emit("receive_message", data)
-//     socket.emit("receive_message", data)
+io.on("send_message", (data)=>{
+    console.log(data)
+    // socket.to(data).emit("received_message", data)
+    // socket.broadcast.emit("receive_message", data)
+    socket.emit("receive_message", data)
 
-// })
+})
 
 
 
