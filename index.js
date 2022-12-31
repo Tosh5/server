@@ -10,8 +10,7 @@ const server = http.createServer(app)
 
 const io = new Server(server, {
     cors: {
-        origin: "https://cheer-app2.vercel.app",
-        // origin: "http://localhost:3000",
+        origin: ["https://cheer-app2.vercel.app", "http://localhost:3000"],
         methods: ['GET', 'POST']
     }
 })
