@@ -16,8 +16,6 @@ const io = new Server(server, {
     }
 })
 
-// origin: "https://cheer-app2.vercel.app",
-
 
 
 // 一旦戻してみる
@@ -42,21 +40,6 @@ const index_bin = [...Array(index_bin_size)].map((_, i) => i);
 io.on("connection", (socket) =>{
     console.log(`User Connected: ${socket.id}`)
 
-    socket.on("send_message", (data)=>{
-        console.log(data)
-        // socket.to(data).emit("received_message", data)
-        // socket.broadcast.emit("receive_message", data)
-        socket.emit("receive_message", data)
-    
-    })
-
-
-
-    // socket.on("join_room" , (data) => {
-    //     socket.join(data)
-    // })
-
-
     socket.on("send_myindex", (data)=>{
         console.log(data)
         index_bin.splice(0,1);
@@ -77,6 +60,23 @@ io.on("connection", (socket) =>{
         
         
     })
+
+    socket.on("send_message", (data)=>{
+        console.log(data)
+        // socket.to(data).emit("received_message", data)
+        // socket.broadcast.emit("receive_message", data)
+        socket.emit("receive_message", data)
+    
+    })
+
+
+
+    // socket.on("join_room" , (data) => {
+    //     socket.join(data)
+    // })
+
+
+    
 })
 
 // io.on("send_message", (data)=>{
