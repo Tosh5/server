@@ -58,6 +58,7 @@ io.on("connection", (socket) =>{
 
         await socket.emit("ave_index", aveIndex)
         await socket.emit("ave_index", {aveIndex})
+        socket.emit("ave_index", {aveIndex})
 
         console.log(`ave_index is ${aveIndex}`)
         
