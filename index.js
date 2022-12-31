@@ -41,7 +41,11 @@ io.on("connection", (socket) =>{
     console.log(`User Connected: ${socket.id}`)
 
     socket.on("send_myindex", async (data)=>{
+
         console.log(data)
+
+        socket.emit("receive_message2", data);
+
         index_bin.splice(0,1);
         index_bin.push(data)
 
@@ -58,6 +62,7 @@ io.on("connection", (socket) =>{
 
         try {
             socket.emit("receive_message2", aveIndex);
+            // socket.emit("receive_message2", {value : aveIndex});
             console.log(`ave_index is ${aveIndex}`)
           } catch (error) {
             console.error(error);
