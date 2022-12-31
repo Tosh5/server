@@ -58,6 +58,7 @@ io.on("connection", (socket) =>{
 
         try {
             socket.emit("ave_index", aveIndex);
+            console.log(`ave_index is ${aveIndex}`)
           } catch (error) {
             console.error(error);
             // expected output: ReferenceError: nonExistentFunction is not defined
@@ -69,7 +70,7 @@ io.on("connection", (socket) =>{
         // await socket.emit("ave_index", {aveIndex})
         // socket.emit("ave_index", {aveIndex})
 
-        console.log(`ave_index is ${aveIndex}`)
+        // console.log(`ave_index is ${aveIndex}`)
         
         
     })
