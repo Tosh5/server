@@ -56,9 +56,18 @@ io.on("connection", (socket) =>{
 
         console.log(aveIndex)
 
-        await socket.emit("ave_index", aveIndex)
-        await socket.emit("ave_index", {aveIndex})
-        socket.emit("ave_index", {aveIndex})
+        try {
+            socket.emit("ave_index", aveIndex);
+          } catch (error) {
+            console.error(error);
+            // expected output: ReferenceError: nonExistentFunction is not defined
+            // (Note: the exact output may be browser-dependent)
+          }
+          
+
+        // await socket.emit("ave_index", aveIndex)
+        // await socket.emit("ave_index", {aveIndex})
+        // socket.emit("ave_index", {aveIndex})
 
         console.log(`ave_index is ${aveIndex}`)
         
