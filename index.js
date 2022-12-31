@@ -40,7 +40,7 @@ const index_bin = [...Array(index_bin_size)].map((_, i) => i);
 io.on("connection", (socket) =>{
     console.log(`User Connected: ${socket.id}`)
 
-    socket.on("send_myindex", (data)=>{
+    socket.on("send_myindex", async (data)=>{
         console.log(data)
         index_bin.splice(0,1);
         index_bin.push(data)
@@ -54,7 +54,7 @@ io.on("connection", (socket) =>{
 
         let aveIndex = sum / index_bin.length
 
-        socket.emit("aveIndex", aveIndex)
+        await socket.emit("aveIndex", aveIndex)
 
         console.log(`aveIndex is ${aveIndex}`)
         
