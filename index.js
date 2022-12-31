@@ -11,9 +11,14 @@ const server = http.createServer(app)
 const io = new Server(server, {
     cors: {
         origin: "https://cheer-app2.vercel.app",
+        // origin: "http://localhost:3000",
         methods: ['GET', 'POST']
     }
 })
+
+// origin: "https://cheer-app2.vercel.app",
+
+
 
 // 一旦戻してみる
 app.use((req, res, next) => {
@@ -37,11 +42,20 @@ const index_bin = [...Array(index_bin_size)].map((_, i) => i);
 io.on("connection", (socket) =>{
     console.log(`User Connected: ${socket.id}`)
 
+    socket.on("send_message", (data)=>{
+        console.log(data)
+        // socket.to(data).emit("received_message", data)
+        // socket.broadcast.emit("receive_message", data)
+        socket.emit("receive_message", data)
+    
+    })
+
 
 
     // socket.on("join_room" , (data) => {
     //     socket.join(data)
     // })
+
 
     socket.on("send_myindex", (data)=>{
         console.log(data)
@@ -65,13 +79,13 @@ io.on("connection", (socket) =>{
     })
 })
 
-io.on("send_message", (data)=>{
-    console.log(data)
-    // socket.to(data).emit("received_message", data)
-    // socket.broadcast.emit("receive_message", data)
-    socket.emit("receive_message", data)
+// io.on("send_message", (data)=>{
+//     console.log(data)
+//     // socket.to(data).emit("received_message", data)
+//     // socket.broadcast.emit("receive_message", data)
+//     socket.emit("receive_message", data)
 
-})
+// })
 
 
 
