@@ -52,7 +52,7 @@ io.on("connection", (socket) =>{
             sum += index_bin[i];
         }
 
-        let aveIndex = sum / index_bin.length
+        let aveIndex = String(sum / index_bin.length)
 
         await socket.emit("aveIndex", aveIndex)
 
