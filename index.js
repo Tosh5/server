@@ -57,7 +57,7 @@ io.on("connection", (socket) =>{
         console.log(aveIndex)
 
         try {
-            socket.emit("ave_index", aveIndex);
+            socket.emit("receive_message2", aveIndex);
             console.log(`ave_index is ${aveIndex}`)
           } catch (error) {
             console.error(error);
