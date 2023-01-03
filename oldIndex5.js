@@ -111,7 +111,7 @@ io.on("connection", (socket) =>{
         console.log(aveIndex)
 
         try {
-            await socket.emit("receive_message2", aveIndex);
+            socket.emit("receive_message2", aveIndex);
             // socket.emit("receive_message2", {value : aveIndex});
             console.log(`ave_index is ${aveIndex}`)
           } catch (error) {
